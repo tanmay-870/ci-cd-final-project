@@ -1,0 +1,11 @@
+✓ CI workflow · 33140899843
+Triggered via push 
+
+JOBS
+✓ build
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Install dependencies
+  ✓ Lint with flake8
+  ✓ Run unit tests with nose
+  ✓ Complete job
