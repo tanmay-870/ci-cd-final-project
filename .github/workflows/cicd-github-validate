@@ -1,0 +1,338 @@
+2026-08-28T04:07:45.8575197Z Current runner version: '2.336.0'
+2026-08-28T04:07:45.8598617Z ##[group]Runner Image Provisioner
+2026-08-28T04:07:45.8599549Z Hosted Compute Agent
+2026-08-28T04:07:45.8600478Z Version: 20260819.586
+2026-08-28T04:07:45.8601159Z Commit: 3cc4a88dfa507ef76119ad1bb3eccc6378bb2b76
+2026-08-28T04:07:45.8601969Z Build Date: 2026-08-18T23:20:18Z
+2026-08-28T04:07:45.8602745Z Worker ID: {738cafb8-0b2c-4217-b6a6-183b0aafe4fa}
+2026-08-28T04:07:45.8603486Z Azure Region: westus
+2026-08-28T04:07:45.8604111Z ##[endgroup]
+2026-08-28T04:07:45.8605642Z ##[group]Operating System
+2026-08-28T04:07:45.8606342Z Ubuntu
+2026-08-28T04:07:45.8606970Z 24.04.4
+2026-08-28T04:07:45.8607514Z LTS
+2026-08-28T04:07:45.8608047Z ##[endgroup]
+2026-08-28T04:07:45.8608690Z ##[group]Runner Image
+2026-08-28T04:07:45.8609400Z Image: ubuntu-24.04
+2026-08-28T04:07:45.8610299Z Version: 20260823.283.1
+2026-08-28T04:07:45.8611634Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260823.283/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-28T04:07:45.8613276Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260823.283
+2026-08-28T04:07:45.8614301Z ##[endgroup]
+2026-08-28T04:07:45.8615543Z ##[group]GITHUB_TOKEN Permissions
+2026-08-28T04:07:45.8617486Z Contents: read
+2026-08-28T04:07:45.8618214Z Metadata: read
+2026-08-28T04:07:45.8618804Z Packages: read
+2026-08-28T04:07:45.8620029Z ##[endgroup]
+2026-08-28T04:07:45.8622105Z Secret source: Actions
+2026-08-28T04:07:45.8623270Z Prepare workflow directory
+2026-08-28T04:07:45.9036821Z Prepare all required actions
+2026-08-28T04:07:45.9086742Z Getting action download info
+2026-08-28T04:07:46.2417259Z Download action repository 'actions/checkout@v3' (SHA:a37ce9120846195fa4ece8f58b268e6043cb2f26)
+2026-08-28T04:07:46.5028046Z Complete job name: build
+2026-08-28T04:07:46.5650545Z ##[group]Checking docker version
+2026-08-28T04:07:46.5663609Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-08-28T04:07:46.6637087Z '1.48'
+2026-08-28T04:07:46.6649156Z Docker daemon API version: '1.48'
+2026-08-28T04:07:46.6650359Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-08-28T04:07:46.6806380Z '1.48'
+2026-08-28T04:07:46.6818745Z Docker client API version: '1.48'
+2026-08-28T04:07:46.6823743Z ##[endgroup]
+2026-08-28T04:07:46.6826660Z ##[group]Clean up resources from previous jobs
+2026-08-28T04:07:46.6832111Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=15759d"
+2026-08-28T04:07:46.6970959Z ##[command]/usr/bin/docker network prune --force --filter "label=15759d"
+2026-08-28T04:07:46.7096237Z ##[endgroup]
+2026-08-28T04:07:46.7096801Z ##[group]Create local container network
+2026-08-28T04:07:46.7107153Z ##[command]/usr/bin/docker network create --label 15759d github_network_87d6a58c3aa3484e995fd77e8f98c575
+2026-08-28T04:07:46.7672777Z b3727289dae34ad13c59e6183a531a16dfc996fd599f3e5f3eca973c9fe60131
+2026-08-28T04:07:46.7692975Z ##[endgroup]
+2026-08-28T04:07:46.7718399Z ##[group]Starting job container
+2026-08-28T04:07:46.7741243Z ##[command]/usr/bin/docker pull python:3.9-slim
+2026-08-28T04:07:47.6785370Z 3.9-slim: Pulling from library/python
+2026-08-28T04:07:47.9422339Z 38513bd72563: Pulling fs layer
+2026-08-28T04:07:47.9423587Z b3ec39b36ae8: Pulling fs layer
+2026-08-28T04:07:47.9424913Z fc7443084902: Pulling fs layer
+2026-08-28T04:07:47.9426248Z ea56f685404a: Pulling fs layer
+2026-08-28T04:07:47.9427471Z ea56f685404a: Waiting
+2026-08-28T04:07:48.1767686Z b3ec39b36ae8: Verifying Checksum
+2026-08-28T04:07:48.1768915Z b3ec39b36ae8: Download complete
+2026-08-28T04:07:48.2083742Z fc7443084902: Verifying Checksum
+2026-08-28T04:07:48.2085016Z fc7443084902: Download complete
+2026-08-28T04:07:48.2563459Z 38513bd72563: Verifying Checksum
+2026-08-28T04:07:48.2564622Z 38513bd72563: Download complete
+2026-08-28T04:07:48.3951387Z ea56f685404a: Download complete
+2026-08-28T04:07:49.2331732Z 38513bd72563: Pull complete
+2026-08-28T04:07:49.4329189Z b3ec39b36ae8: Pull complete
+2026-08-28T04:07:50.1659130Z fc7443084902: Pull complete
+2026-08-28T04:07:50.1837144Z ea56f685404a: Pull complete
+2026-08-28T04:07:50.1878286Z Digest: sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b
+2026-08-28T04:07:50.1891012Z Status: Downloaded newer image for python:3.9-slim
+2026-08-28T04:07:50.1899146Z docker.io/library/python:3.9-slim
+2026-08-28T04:07:50.1979291Z ##[command]/usr/bin/docker create --name 01b806b840e4409bb409f92e117274a9_python39slim_dc82a4 --label 15759d --workdir /__w/ci-cd-final-project/ci-cd-final-project --network github_network_87d6a58c3aa3484e995fd77e8f98c575  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" python:3.9-slim "-f" "/dev/null"
+2026-08-28T04:07:50.2246349Z 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b
+2026-08-28T04:07:50.2267129Z ##[command]/usr/bin/docker start 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b
+2026-08-28T04:07:50.4214425Z 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b
+2026-08-28T04:07:50.4235186Z ##[command]/usr/bin/docker ps --all --filter id=8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-08-28T04:07:50.4354313Z 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b Up Less than a second
+2026-08-28T04:07:50.4373227Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b
+2026-08-28T04:07:50.4491040Z HOME=/github/home
+2026-08-28T04:07:50.4491726Z GITHUB_ACTIONS=true
+2026-08-28T04:07:50.4492240Z CI=true
+2026-08-28T04:07:50.4492803Z PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-08-28T04:07:50.4493408Z LANG=C.UTF-8
+2026-08-28T04:07:50.4493799Z GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568
+2026-08-28T04:07:50.4494269Z PYTHON_VERSION=3.9.25
+2026-08-28T04:07:50.4495200Z PYTHON_SHA256=00e07d7c0f2f0cc002432d1ee84d2a40dae404a99303e3f97701c10966c91834
+2026-08-28T04:07:50.4513305Z ##[endgroup]
+2026-08-28T04:07:50.4522014Z ##[group]Waiting for all services to be ready
+2026-08-28T04:07:50.4524159Z ##[endgroup]
+2026-08-28T04:07:50.4810242Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-28T04:07:50.4818111Z ##[group]Run actions/checkout@v3
+2026-08-28T04:07:50.4818576Z with:
+2026-08-28T04:07:50.4818823Z   repository: tanmay-870/ci-cd-final-project
+2026-08-28T04:07:50.4821639Z   token: ***
+2026-08-28T04:07:50.4821851Z   ssh-strict: true
+2026-08-28T04:07:50.4822079Z   persist-credentials: true
+2026-08-28T04:07:50.4822318Z   clean: true
+2026-08-28T04:07:50.4822545Z   sparse-checkout-cone-mode: true
+2026-08-28T04:07:50.4822800Z   fetch-depth: 1
+2026-08-28T04:07:50.4822997Z   fetch-tags: false
+2026-08-28T04:07:50.4823197Z   lfs: false
+2026-08-28T04:07:50.4823380Z   submodules: false
+2026-08-28T04:07:50.4823587Z   set-safe-directory: true
+2026-08-28T04:07:50.4823869Z   allow-unsafe-pr-checkout: false
+2026-08-28T04:07:50.4824381Z ##[endgroup]
+2026-08-28T04:07:50.4885182Z ##[command]/usr/bin/docker exec  8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b sh -c "cat /etc/*release | grep ^ID"
+2026-08-28T04:07:50.6661238Z (node:15) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-28T04:07:50.6662006Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-28T04:07:50.6793650Z Syncing repository: tanmay-870/ci-cd-final-project
+2026-08-28T04:07:50.6795853Z ##[group]Getting Git version info
+2026-08-28T04:07:50.6796635Z Working directory is '/__w/ci-cd-final-project/ci-cd-final-project'
+2026-08-28T04:07:50.6797754Z ##[endgroup]
+2026-08-28T04:07:50.6798378Z Deleting the contents of '/__w/ci-cd-final-project/ci-cd-final-project'
+2026-08-28T04:07:50.6799253Z The repository will be downloaded using the GitHub REST API
+2026-08-28T04:07:50.6800410Z To create a local Git repository instead, add Git 2.18 or higher to the PATH
+2026-08-28T04:07:50.6801201Z Downloading the archive
+2026-08-28T04:07:50.6914689Z (node:15) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-28T04:07:51.0869123Z Writing archive to disk
+2026-08-28T04:07:51.0874511Z Extracting the archive
+2026-08-28T04:07:51.0898384Z [command]/usr/bin/tar xz -C /__w/ci-cd-final-project/ci-cd-final-project/23f50ea5-8455-49f7-bf20-079dd6e6ea80 -f /__w/ci-cd-final-project/ci-cd-final-project/23f50ea5-8455-49f7-bf20-079dd6e6ea80.tar.gz
+2026-08-28T04:07:51.0974995Z Resolved version tanmay-870-ci-cd-final-project-506680f
+2026-08-28T04:07:51.1221063Z ##[group]Run python -m pip install --upgrade pip
+2026-08-28T04:07:51.1221512Z [36;1mpython -m pip install --upgrade pip[0m
+2026-08-28T04:07:51.1221847Z [36;1mpip install -r requirements.txt[0m
+2026-08-28T04:07:51.1224760Z shell: sh -e {0}
+2026-08-28T04:07:51.1224992Z ##[endgroup]
+2026-08-28T04:07:52.6267535Z WARNING: The directory '/github/home/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+2026-08-28T04:07:52.7174664Z Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (23.0.1)
+2026-08-28T04:07:52.8234681Z Collecting pip
+2026-08-28T04:07:52.8702563Z   Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+2026-08-28T04:07:52.9422973Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 25.8 MB/s eta 0:00:00
+2026-08-28T04:07:53.0074097Z Installing collected packages: pip
+2026-08-28T04:07:53.0076457Z   Attempting uninstall: pip
+2026-08-28T04:07:53.0083959Z     Found existing installation: pip 23.0.1
+2026-08-28T04:07:53.2121432Z     Uninstalling pip-23.0.1:
+2026-08-28T04:07:53.2256462Z       Successfully uninstalled pip-23.0.1
+2026-08-28T04:07:54.1129295Z Successfully installed pip-26.0.1
+2026-08-28T04:07:54.1132155Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2026-08-28T04:07:54.5754486Z WARNING: The directory '/github/home/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+2026-08-28T04:07:54.7152371Z Collecting Werkzeug==2.1.2 (from -r requirements.txt (line 2))
+2026-08-28T04:07:54.7795345Z   Downloading Werkzeug-2.1.2-py3-none-any.whl.metadata (4.4 kB)
+2026-08-28T04:07:54.8138407Z Collecting Flask==2.1.2 (from -r requirements.txt (line 5))
+2026-08-28T04:07:54.8347799Z   Downloading Flask-2.1.2-py3-none-any.whl.metadata (3.9 kB)
+2026-08-28T04:07:54.8692995Z Collecting python-dotenv==0.20.0 (from -r requirements.txt (line 6))
+2026-08-28T04:07:54.8890940Z   Downloading python_dotenv-0.20.0-py3-none-any.whl.metadata (19 kB)
+2026-08-28T04:07:54.9282086Z Collecting gunicorn==20.1.0 (from -r requirements.txt (line 9))
+2026-08-28T04:07:54.9478707Z   Downloading gunicorn-20.1.0-py3-none-any.whl.metadata (3.8 kB)
+2026-08-28T04:07:54.9746744Z Collecting honcho==1.1.0 (from -r requirements.txt (line 10))
+2026-08-28T04:07:55.0607339Z   Downloading honcho-1.1.0-py2.py3-none-any.whl.metadata (3.4 kB)
+2026-08-28T04:07:55.1192212Z Collecting pylint==2.14.0 (from -r requirements.txt (line 13))
+2026-08-28T04:07:55.1393544Z   Downloading pylint-2.14.0-py3-none-any.whl.metadata (9.6 kB)
+2026-08-28T04:07:55.1767610Z Collecting flake8==4.0.1 (from -r requirements.txt (line 14))
+2026-08-28T04:07:55.1962716Z   Downloading flake8-4.0.1-py2.py3-none-any.whl.metadata (4.0 kB)
+2026-08-28T04:07:55.2947316Z Collecting black==22.3.0 (from -r requirements.txt (line 15))
+2026-08-28T04:07:55.3144521Z   Downloading black-22.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (45 kB)
+2026-08-28T04:07:55.3607609Z Collecting nose==1.3.7 (from -r requirements.txt (line 18))
+2026-08-28T04:07:55.3798433Z   Downloading nose-1.3.7-py3-none-any.whl.metadata (1.7 kB)
+2026-08-28T04:07:55.4701882Z Collecting pinocchio==0.4.3 (from -r requirements.txt (line 19))
+2026-08-28T04:07:55.4901851Z   Downloading pinocchio-0.4.3-py3-none-any.whl.metadata (975 bytes)
+2026-08-28T04:07:56.1130408Z Collecting coverage==6.3.2 (from -r requirements.txt (line 20))
+2026-08-28T04:07:56.1330569Z   Downloading coverage-6.3.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+2026-08-28T04:07:56.1626758Z Collecting httpie==3.2.1 (from -r requirements.txt (line 23))
+2026-08-28T04:07:56.1826165Z   Downloading httpie-3.2.1-py3-none-any.whl.metadata (7.1 kB)
+2026-08-28T04:07:56.2193218Z Collecting Jinja2>=3.0 (from Flask==2.1.2->-r requirements.txt (line 5))
+2026-08-28T04:07:56.2390096Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2026-08-28T04:07:56.2651095Z Collecting itsdangerous>=2.0 (from Flask==2.1.2->-r requirements.txt (line 5))
+2026-08-28T04:07:56.2843183Z   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+2026-08-28T04:07:56.3179082Z Collecting click>=8.0 (from Flask==2.1.2->-r requirements.txt (line 5))
+2026-08-28T04:07:56.3365464Z   Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+2026-08-28T04:07:56.3843789Z Collecting importlib-metadata>=3.6.0 (from Flask==2.1.2->-r requirements.txt (line 5))
+2026-08-28T04:07:56.4031324Z   Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+2026-08-28T04:07:56.4083555Z Requirement already satisfied: setuptools>=3.0 in /usr/local/lib/python3.9/site-packages (from gunicorn==20.1.0->-r requirements.txt (line 9)) (79.0.1)
+2026-08-28T04:07:56.4359172Z Collecting dill>=0.2 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.4545073Z   Downloading dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+2026-08-28T04:07:56.4927750Z Collecting platformdirs>=2.2.0 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.5126843Z   Downloading platformdirs-4.4.0-py3-none-any.whl.metadata (12 kB)
+2026-08-28T04:07:56.5654750Z Collecting astroid<=2.12.0-dev0,>=2.11.5 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.5849242Z   Downloading astroid-2.11.7-py3-none-any.whl.metadata (4.7 kB)
+2026-08-28T04:07:56.6444307Z Collecting isort<6,>=4.2.5 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.6629119Z   Downloading isort-5.13.2-py3-none-any.whl.metadata (12 kB)
+2026-08-28T04:07:56.6883930Z Collecting mccabe<0.8,>=0.6 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.7067926Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2026-08-28T04:07:56.7409165Z Collecting tomlkit>=0.10.1 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.7601234Z   Downloading tomlkit-0.15.1-py3-none-any.whl.metadata (3.3 kB)
+2026-08-28T04:07:56.7936952Z Collecting typing-extensions>=3.10.0 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.8123559Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-08-28T04:07:56.8526706Z Collecting tomli>=1.1.0 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.8713307Z   Downloading tomli-2.4.1-py3-none-any.whl.metadata (10 kB)
+2026-08-28T04:07:56.8743865Z Collecting mccabe<0.8,>=0.6 (from pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:56.8944512Z   Downloading mccabe-0.6.1-py2.py3-none-any.whl.metadata (4.3 kB)
+2026-08-28T04:07:56.9216014Z Collecting pycodestyle<2.9.0,>=2.8.0 (from flake8==4.0.1->-r requirements.txt (line 14))
+2026-08-28T04:07:56.9415572Z   Downloading pycodestyle-2.8.0-py2.py3-none-any.whl.metadata (31 kB)
+2026-08-28T04:07:56.9719833Z Collecting pyflakes<2.5.0,>=2.4.0 (from flake8==4.0.1->-r requirements.txt (line 14))
+2026-08-28T04:07:56.9916959Z   Downloading pyflakes-2.4.0-py2.py3-none-any.whl.metadata (3.9 kB)
+2026-08-28T04:07:57.0265931Z Collecting pathspec>=0.9.0 (from black==22.3.0->-r requirements.txt (line 15))
+2026-08-28T04:07:57.0452026Z   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+2026-08-28T04:07:57.0710206Z Collecting mypy-extensions>=0.4.3 (from black==22.3.0->-r requirements.txt (line 15))
+2026-08-28T04:07:57.0902565Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2026-08-28T04:07:57.1207370Z Collecting colorama (from pinocchio==0.4.3->-r requirements.txt (line 19))
+2026-08-28T04:07:57.1393126Z   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+2026-08-28T04:07:57.1421978Z Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (from httpie==3.2.1->-r requirements.txt (line 23)) (26.0.1)
+2026-08-28T04:07:57.3140945Z Collecting charset-normalizer>=2.0.0 (from httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.3331251Z   Downloading charset_normalizer-3.5.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (45 kB)
+2026-08-28T04:07:57.3621802Z Collecting defusedxml>=0.6.0 (from httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.3817348Z   Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+2026-08-28T04:07:57.4551757Z Collecting requests>=2.22.0 (from requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.4738971Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+2026-08-28T04:07:57.5137775Z Collecting Pygments>=2.5.2 (from httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.5323988Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-08-28T04:07:57.5594137Z Collecting requests-toolbelt>=0.9.1 (from httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.5781902Z   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+2026-08-28T04:07:57.8947684Z Collecting multidict>=4.7.0 (from httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.9140599Z   Downloading multidict-6.7.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+2026-08-28T04:07:57.9714996Z Collecting rich>=9.10.0 (from httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:57.9904507Z   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+2026-08-28T04:07:58.0493521Z Collecting lazy-object-proxy>=1.4.0 (from astroid<=2.12.0-dev0,>=2.11.5->pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:58.0693143Z   Downloading lazy_object_proxy-1.12.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.1 kB)
+2026-08-28T04:07:58.5398665Z Collecting wrapt<2,>=1.11 (from astroid<=2.12.0-dev0,>=2.11.5->pylint==2.14.0->-r requirements.txt (line 13))
+2026-08-28T04:07:58.5594125Z   Downloading wrapt-1.17.3-cp39-cp39-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
+2026-08-28T04:07:58.5991809Z Collecting zipp>=3.20 (from importlib-metadata>=3.6.0->Flask==2.1.2->-r requirements.txt (line 5))
+2026-08-28T04:07:58.6177217Z   Downloading zipp-3.23.1-py3-none-any.whl.metadata (3.6 kB)
+2026-08-28T04:07:58.7018315Z Collecting MarkupSafe>=2.0 (from Jinja2>=3.0->Flask==2.1.2->-r requirements.txt (line 5))
+2026-08-28T04:07:58.7214162Z   Downloading markupsafe-3.0.3-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2026-08-28T04:07:58.7660479Z Collecting idna<4,>=2.5 (from requests>=2.22.0->requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:58.7848832Z   Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+2026-08-28T04:07:58.8287435Z Collecting urllib3<3,>=1.21.1 (from requests>=2.22.0->requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:58.8470036Z   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+2026-08-28T04:07:58.8856039Z Collecting certifi>=2017.4.17 (from requests>=2.22.0->requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:58.9041993Z   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+2026-08-28T04:07:58.9392207Z Collecting PySocks!=1.5.7,>=1.5.6 (from requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:58.9577722Z   Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+2026-08-28T04:07:58.9921474Z Collecting markdown-it-py>=2.2.0 (from rich>=9.10.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:59.0118478Z   Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+2026-08-28T04:07:59.0531661Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=9.10.0->httpie==3.2.1->-r requirements.txt (line 23))
+2026-08-28T04:07:59.0756986Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2026-08-28T04:07:59.1123890Z Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+2026-08-28T04:07:59.1654112Z Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+2026-08-28T04:07:59.1874293Z Downloading python_dotenv-0.20.0-py3-none-any.whl (17 kB)
+2026-08-28T04:07:59.2061457Z Downloading gunicorn-20.1.0-py3-none-any.whl (79 kB)
+2026-08-28T04:07:59.2268587Z Downloading honcho-1.1.0-py2.py3-none-any.whl (21 kB)
+2026-08-28T04:07:59.2470373Z Downloading pylint-2.14.0-py3-none-any.whl (485 kB)
+2026-08-28T04:07:59.2995822Z Downloading flake8-4.0.1-py2.py3-none-any.whl (64 kB)
+2026-08-28T04:07:59.3198254Z Downloading black-22.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.5 MB)
+2026-08-28T04:07:59.3619817Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 36.1 MB/s  0:00:00
+2026-08-28T04:07:59.3809238Z Downloading nose-1.3.7-py3-none-any.whl (154 kB)
+2026-08-28T04:07:59.4005537Z Downloading pinocchio-0.4.3-py3-none-any.whl (12 kB)
+2026-08-28T04:07:59.4205300Z Downloading coverage-6.3.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (210 kB)
+2026-08-28T04:07:59.4403242Z Downloading httpie-3.2.1-py3-none-any.whl (124 kB)
+2026-08-28T04:07:59.4605943Z Downloading astroid-2.11.7-py3-none-any.whl (251 kB)
+2026-08-28T04:07:59.4798413Z Downloading isort-5.13.2-py3-none-any.whl (92 kB)
+2026-08-28T04:07:59.4985161Z Downloading mccabe-0.6.1-py2.py3-none-any.whl (8.6 kB)
+2026-08-28T04:07:59.5173519Z Downloading pycodestyle-2.8.0-py2.py3-none-any.whl (42 kB)
+2026-08-28T04:07:59.5361379Z Downloading pyflakes-2.4.0-py2.py3-none-any.whl (69 kB)
+2026-08-28T04:07:59.5565463Z Downloading wrapt-1.17.3-cp39-cp39-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (81 kB)
+2026-08-28T04:07:59.5756944Z Downloading charset_normalizer-3.5.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (262 kB)
+2026-08-28T04:07:59.5946160Z Downloading click-8.1.8-py3-none-any.whl (98 kB)
+2026-08-28T04:07:59.6134303Z Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+2026-08-28T04:07:59.6322142Z Downloading dill-0.4.1-py3-none-any.whl (120 kB)
+2026-08-28T04:07:59.6509806Z Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+2026-08-28T04:07:59.6697295Z Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2026-08-28T04:07:59.6885637Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+2026-08-28T04:07:59.7082345Z Downloading lazy_object_proxy-1.12.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (66 kB)
+2026-08-28T04:07:59.7281128Z Downloading markupsafe-3.0.3-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+2026-08-28T04:07:59.7468619Z Downloading multidict-6.7.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (240 kB)
+2026-08-28T04:07:59.7669352Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2026-08-28T04:07:59.7855619Z Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+2026-08-28T04:07:59.8041499Z Downloading platformdirs-4.4.0-py3-none-any.whl (18 kB)
+2026-08-28T04:07:59.8228968Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-08-28T04:07:59.8420386Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 61.5 MB/s  0:00:00
+2026-08-28T04:07:59.8606065Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+2026-08-28T04:07:59.8792350Z Downloading idna-3.19-py3-none-any.whl (68 kB)
+2026-08-28T04:07:59.8981053Z Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+2026-08-28T04:07:59.9171171Z Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+2026-08-28T04:07:59.9364528Z Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+2026-08-28T04:07:59.9549005Z Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+2026-08-28T04:07:59.9738953Z Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+2026-08-28T04:07:59.9929150Z Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+2026-08-28T04:08:00.0118822Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-08-28T04:08:00.0306670Z Downloading tomli-2.4.1-py3-none-any.whl (14 kB)
+2026-08-28T04:08:00.0491926Z Downloading tomlkit-0.15.1-py3-none-any.whl (49 kB)
+2026-08-28T04:08:00.0684275Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-08-28T04:08:00.0874001Z Downloading zipp-3.23.1-py3-none-any.whl (10 kB)
+2026-08-28T04:08:00.1060018Z Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+2026-08-28T04:08:00.2235463Z Installing collected packages: nose, mccabe, honcho, zipp, wrapt, Werkzeug, urllib3, typing-extensions, tomlkit, tomli, python-dotenv, PySocks, Pygments, pyflakes, pycodestyle, platformdirs, pathspec, mypy-extensions, mdurl, MarkupSafe, lazy-object-proxy, itsdangerous, isort, idna, gunicorn, dill, defusedxml, coverage, colorama, click, charset-normalizer, certifi, requests, pinocchio, multidict, markdown-it-py, Jinja2, importlib-metadata, flake8, black, astroid, rich, requests-toolbelt, pylint, Flask, httpie
+2026-08-28T04:08:03.2254329Z 
+2026-08-28T04:08:03.2357404Z Successfully installed Flask-2.1.2 Jinja2-3.1.6 MarkupSafe-3.0.3 PySocks-1.7.1 Pygments-2.21.0 Werkzeug-2.1.2 astroid-2.11.7 black-22.3.0 certifi-2026.7.22 charset-normalizer-3.5.1 click-8.1.8 colorama-0.4.6 coverage-6.3.2 defusedxml-0.7.1 dill-0.4.1 flake8-4.0.1 gunicorn-20.1.0 honcho-1.1.0 httpie-3.2.1 idna-3.19 importlib-metadata-8.7.1 isort-5.13.2 itsdangerous-2.2.0 lazy-object-proxy-1.12.0 markdown-it-py-3.0.0 mccabe-0.6.1 mdurl-0.1.2 multidict-6.7.1 mypy-extensions-1.1.0 nose-1.3.7 pathspec-1.1.1 pinocchio-0.4.3 platformdirs-4.4.0 pycodestyle-2.8.0 pyflakes-2.4.0 pylint-2.14.0 python-dotenv-0.20.0 requests-2.32.5 requests-toolbelt-1.0.0 rich-15.0.0 tomli-2.4.1 tomlkit-0.15.1 typing-extensions-4.16.0 urllib3-2.6.3 wrapt-1.17.3 zipp-3.23.1
+2026-08-28T04:08:03.2364368Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-08-28T04:08:03.6051887Z ##[group]Run flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+2026-08-28T04:08:03.6052536Z [36;1mflake8 service --count --select=E9,F63,F7,F82 --show-source --statistics[0m
+2026-08-28T04:08:03.6053102Z [36;1mflake8 service --count --max-complexity=10 --max-line-length=127 --statistics[0m
+2026-08-28T04:08:03.6053621Z shell: sh -e {0}
+2026-08-28T04:08:03.6053822Z ##[endgroup]
+2026-08-28T04:08:03.9062220Z 0
+2026-08-28T04:08:04.0932330Z 0
+2026-08-28T04:08:04.1115255Z ##[group]Run nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+2026-08-28T04:08:04.1116076Z [36;1mnosetests -v --with-spec --spec-color --with-coverage --cover-package=app[0m
+2026-08-28T04:08:04.1116587Z shell: sh -e {0}
+2026-08-28T04:08:04.1116785Z ##[endgroup]
+2026-08-28T04:08:04.4229783Z nose.config: INFO: Ignoring files matching ['^\\.', '^_', '^setup\\.py$']
+2026-08-28T04:08:04.4586564Z nose.plugins.cover: INFO: Coverage report will include only packages: ['service', 'app']
+2026-08-28T04:08:04.6242371Z 
+2026-08-28T04:08:04.6304006Z  REST API Server Tests 
+2026-08-28T04:08:04.6304762Z [1;32m- It should Create a counter[1;0m
+2026-08-28T04:08:04.6328409Z [1;32m- It should not Create a duplicate counter[1;0m
+2026-08-28T04:08:04.6364757Z [1;32m- It should Delete a counter[1;0m
+2026-08-28T04:08:04.6374773Z [1;32m- It should be healthy[1;0m
+2026-08-28T04:08:04.6385739Z [1;32m- It should call the index call[1;0m
+2026-08-28T04:08:04.6412770Z [1;32m- It should List counters[1;0m
+2026-08-28T04:08:04.6432413Z [1;32m- It should Read a counter[1;0m
+2026-08-28T04:08:04.6459651Z [1;32m- It should Update a counter[1;0m
+2026-08-28T04:08:04.6471342Z [1;32m- It should not Update a missing counter[1;0m
+2026-08-28T04:08:04.6488178Z /usr/local/lib/python3.9/site-packages/coverage/inorout.py:519: CoverageWarning: Module app was never imported. (module-not-imported)
+2026-08-28T04:08:04.6488941Z   self.warn(f"Module {pkg} was never imported.", slug="module-not-imported")
+2026-08-28T04:08:04.6722413Z 
+2026-08-28T04:08:04.6722848Z Name                             Stmts   Miss  Cover   Missing
+2026-08-28T04:08:04.6723605Z --------------------------------------------------------------
+2026-08-28T04:08:04.6724367Z service/__init__.py                  8      0   100%
+2026-08-28T04:08:04.6725073Z service/common/log_handlers.py      11      1    91%   37
+2026-08-28T04:08:04.6725771Z service/common/status.py            45      0   100%
+2026-08-28T04:08:04.6726497Z service/routes.py                   48      0   100%
+2026-08-28T04:08:04.6726988Z --------------------------------------------------------------
+2026-08-28T04:08:04.6727452Z TOTAL                              112      1    99%
+2026-08-28T04:08:04.6727912Z ----------------------------------------------------------------------
+2026-08-28T04:08:04.6728362Z Ran 9 tests in 0.161s
+2026-08-28T04:08:04.6728543Z 
+2026-08-28T04:08:04.6728650Z OK
+2026-08-28T04:08:04.6728778Z 
+2026-08-28T04:08:04.7106572Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-28T04:08:04.7108080Z Post job cleanup.
+2026-08-28T04:08:04.7115359Z ##[command]/usr/bin/docker exec  8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b sh -c "cat /etc/*release | grep ^ID"
+2026-08-28T04:08:04.8759570Z (node:87) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-28T04:08:04.8761092Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-28T04:08:04.8868855Z Stop and remove container: 01b806b840e4409bb409f92e117274a9_python39slim_dc82a4
+2026-08-28T04:08:04.8874008Z ##[command]/usr/bin/docker rm --force 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b
+2026-08-28T04:08:05.2031760Z 8f0dd5285c7ee4bc119ae9827012e5201d5af42240df36b63434f2977795b25b
+2026-08-28T04:08:05.2063240Z Remove container network: github_network_87d6a58c3aa3484e995fd77e8f98c575
+2026-08-28T04:08:05.2068445Z ##[command]/usr/bin/docker network rm github_network_87d6a58c3aa3484e995fd77e8f98c575
+2026-08-28T04:08:05.3114157Z github_network_87d6a58c3aa3484e995fd77e8f98c575
+2026-08-28T04:08:05.3188151Z Cleaning up orphan processes
+2026-08-28T04:08:05.3549350Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v3. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
